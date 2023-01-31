@@ -1,0 +1,14 @@
+html
+    head
+        title Bienvenido
+    body 
+        p 
+            span#mensaje
+            
+        script(src="/socket.io/socket.io.js")
+        script.
+            socket= io.connect('http://localhost:3000')
+            socket.emit('boton',{message1: 'Hello from the client'}) 
+            socket.on('HolaMundo',function(data){;
+                document.querySelector('#mensaje').innerHTML=data.message
+            })

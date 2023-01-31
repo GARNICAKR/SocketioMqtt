@@ -1,0 +1,44 @@
+doctype html
+html
+    head
+        title Bienvenido
+    body 
+        
+        h1=user.username 
+        p 
+            span Usuarios concectados: 
+            span#connected
+            br
+            span#mensaje
+        form(action='/sessions?_method=DELETE' method="POST")
+            input(type="submit" value="Cerrar Sesion")
+        <button id="send-event">Enviar evento</button>
+
+        script(src="/socket.io/socket.io.js")
+        script. 
+           socket= io.connect(window.location.origin,{query:'loggeduser=#{user.id}'})
+           
+           socket.on('count_updated',function(data){
+             document.querySelector('#connected').innerHTML=data.count
+           })
+           socket.on('HolaMundo',function(data){
+               document.querySelector('#mensaje').innerHTML=data.message
+           })
+           document.getElementById("send-event").addEventListener("click", () => {
+               console.log("Entro en el Html")
+               socket.emit('room',"hola")
+               socket.emit('room', { message: "Hello from the client!" }, (error) => {
+                    if (error) {
+                        console.error("Error emitting event:", error);
+                    } else {
+                        console.log("Event emitted successfully");
+                    }
+                });
+            })
+            socket.emit('room2', { message: "Hello from the client" }, (error) => {
+                    if (error) {
+                        console.error("Error emitting event:", error);
+                    } else {
+                        console.log("Event emitted successfully");
+                    }
+                });

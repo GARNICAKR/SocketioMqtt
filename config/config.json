@@ -1,0 +1,30 @@
+{
+  "development": {
+    "username": null,
+    "password": null,
+    "database": "practica-backend",
+    "host": "127.0.0.1",
+    "dialect": "sqlite",
+    "storage": "./practica-backend.sqlite3"
+  },
+  "test": {
+    "username": "root",
+    "password": null,
+    "database": "database_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "xaweyumzilpywt",
+    "password": "a9a0ca9c962384c9a255b606a9f4f8e98cfd7ac5b7e8d34bd9af85b3118bd235",
+    "database": "d6s0jm9mrg889m",
+    "host": "ec2-3-225-110-188.compute-1.amazonaws.com",
+    "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true, 
+        "rejectUnauthorized": false 
+      }
+    }
+  }
+}
